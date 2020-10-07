@@ -12,6 +12,7 @@ import org.joda.time.Minutes
 import java.text.DecimalFormat
 import kotlin.math.abs
 
+//Function to check network connection
 fun isInternetAvailable(activity: Activity): Boolean {
     var result = false
     val connectivityManager =
@@ -28,6 +29,7 @@ fun isInternetAvailable(activity: Activity): Boolean {
     return result
 }
 
+//function to calculate the difference between date and time
 fun articleDateTime(context: Context,createdDateTime:String) :String{
     val currentTime = DateTime.now()
     val parsedCreatedDateTime = DateTime.parse(createdDateTime)
@@ -42,7 +44,7 @@ fun articleDateTime(context: Context,createdDateTime:String) :String{
         else -> "$minute ${context.getString(R.string.minute)}"
     }
 }
-
+//function to format the numbers in expected format
 fun Int.getFormatedValue(context: Context, suffix: String): String {
     return if (abs(this / 1000) > 1)
         "${DecimalFormat("##.#").format((toDouble() / 1000))}${context.getString(R.string.k)} $suffix"

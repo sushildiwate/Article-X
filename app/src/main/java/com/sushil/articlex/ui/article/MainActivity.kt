@@ -34,7 +34,10 @@ class MainActivity : ApplicationActivity() {
     }
 
     private fun initUI() {
+        //Custom Name set to action bar
         setCustomTitle(getString(R.string.app_name))
+
+        //Pagination achieved on scroll state changed. It can be done better by custom scroll view. Custom scroll will not call the function even if the list is scrolled upwards
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = articlesAdapter
@@ -46,8 +49,8 @@ class MainActivity : ApplicationActivity() {
                         (this@apply.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
                     if (!isLoading && !pageEmpty && itemCount == lastItemInList + 1
                     ) {
-                        mArticleXViewModel.getArticles(pageNumber, this@MainActivity)
-                    } else if (itemCount == lastItemInList + 1 && newState == 1)
+                        mArticleXViewModel.getArticles(pageNumber, this@MainActivity) //calling Get article function present in model
+                    } else if (itemCount == lastItemInList + 1 && newState == 1) //End of list
                         Toast.makeText(
                             this@MainActivity,
                             "You're All Caught Up",
@@ -58,6 +61,7 @@ class MainActivity : ApplicationActivity() {
         }
     }
 
+    //To get the data fetched through API/database and pass it to the adapter.
     private fun subscribeObserver() {
         mArticleXViewModel.responseLiveData.observe(this, Observer { articlesList ->
             if (articlesList.isNotEmpty()) {
@@ -69,6 +73,7 @@ class MainActivity : ApplicationActivity() {
             }
         })
 
+        //Hide/show the progress bar
         mArticleXViewModel.progressBar.observe(this, Observer { it ->
             if (it == 0) {
                 progressBar.visibility = View.VISIBLE

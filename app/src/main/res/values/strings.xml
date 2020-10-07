@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Article-X</string>
+    <string name="minute">min</string>
+    <string name="hour">hr</string>
+    <string name="day">d</string>
+    <string name="k">K</string>
+    <string name="likes">Likes</string>
+    <string name="comments">Comments</string>
 </resources>

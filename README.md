@@ -1,6 +1,4 @@
 
-Project for the assignment of Jet2
-
 Name of the project : Article-X
 
 Project Introduction : This is assignment project.
